@@ -26,28 +26,17 @@ def get_pw(username):
 @application.route("/")
 #@auth.login_required
 def index():
-    return render_template('index.html')
+    return render_template('login.html')
 
 @application.route("/index.html")
-#@auth.login_required
+@auth.login_required
 def home():
     return render_template('index.html')
 
-
-@application.route("/face.html")
-#@auth.login_required
-def face():
-    return render_template('face.html')
-
-@application.route("/elements.html")
-#@auth.login_required
-def elements():
-    return render_template('elements.html')
-
-@application.route("/generic.html")
-#@auth.login_required
-def generic():
-    return render_template('generic.html')
+@application.route("/destinos.html")
+@auth.login_required
+def destinos():
+    return render_template('destinos.html')
 
 if __name__ == "__main__":
     application.run(host="0.0.0.0", port='8080')
