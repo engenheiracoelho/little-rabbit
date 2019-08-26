@@ -1,10 +1,9 @@
 from flask import (
         redirect, render_template, request, session, url_for, Flask,jsonify
 )
-from email.mime.text import MIMEText
-import smtplib
 import json
 import bson
+
 from flask_httpauth import HTTPBasicAuth
 from bson.objectid import ObjectId
 
@@ -14,8 +13,7 @@ application = Flask(__name__)
 auth = HTTPBasicAuth()
 
 # set the secret key.  keep this really secret:
-application.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-
+application.secret_key = '2887157sdhurywnadpakpefli5bf27c9998f6edeaa960c9255'
 #-- oAuth Operations --#
 @auth.get_password
 def get_pw(username):
@@ -24,25 +22,30 @@ def get_pw(username):
     if user is not None:
         return user['password']
     return None
-
-
+    
 @application.route("/")
-@auth.login_required
+#@auth.login_required
 def index():
     return render_template('index.html')
 
 @application.route("/index.html")
-@auth.login_required
+#@auth.login_required
 def home():
     return render_template('index.html')
 
+
+@application.route("/face.html")
+#@auth.login_required
+def face():
+    return render_template('face.html')
+
 @application.route("/elements.html")
-@auth.login_required
+#@auth.login_required
 def elements():
     return render_template('elements.html')
 
 @application.route("/generic.html")
-@auth.login_required
+#@auth.login_required
 def generic():
     return render_template('generic.html')
 
